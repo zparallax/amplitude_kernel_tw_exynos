@@ -3,6 +3,7 @@
 #
 
 obj-$(CONFIG_THERMAL)		+= thermal_sys.o
+
 thermal_sys-y			+= thermal_core.o
 
 # governors
@@ -24,3 +25,4 @@ obj-$(CONFIG_ARMADA_THERMAL)	+= armada_thermal.o
 obj-$(CONFIG_DB8500_CPUFREQ_COOLING)	+= db8500_cpufreq_cooling.o
 obj-$(CONFIG_INTEL_POWERCLAMP)	+= intel_powerclamp.o
 obj-$(CONFIG_CPU_THERMAL_IPA)	+= ipa.o
+obj-$(CONFIG_INTELLI_THERMAL_V2)	+= intelli/msm_thermal_v2.o

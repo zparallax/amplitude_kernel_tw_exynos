@@ -60,6 +60,21 @@ config THERMAL_GOV_STEP_WISE
 	bool "Step_wise thermal governor"
 	help
 	  Enable this to manage platform thermals using a simple linear
+	  
+choice
+
+	prompt "MSM Thermal Monitor Types"
+	default THERMAL_MONITOR
+
+	
+config INTELLI_THERMAL_V2
+	bool "Better thermal monitor for MSM"
+	depends on THERMAL_TSENS8974
+	depends on CPU_FREQ_MSM
+	default n
+	help
+	  This enables thermal monitoring capability in the kernel replacing
+	  userspace thermal monitoring altogether.
 
 config THERMAL_GOV_USER_SPACE
 	bool "User_space thermal governor"
@@ -90,6 +105,12 @@ config THERMAL_EMULATION
 	  WARNING: Be careful while enabling this option on production systems,
 	  because userland can easily disable the thermal policy by simply
 	  flooding this sysfs node with low temperature values.
+	  This enables thermal monitoring capability in the kernel in the
+	  absence of a system wide thermal monitoring entity or until such an
+	  entity starts running in the userspace. Monitors TSENS temperature
+	  and limits the max frequency of the cores.
+	  
+endchoice
 
 config SPEAR_THERMAL
 	bool "SPEAr thermal sensor driver"

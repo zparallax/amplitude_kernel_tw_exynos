@@ -124,7 +124,6 @@ config CPU_FREQ_DEFAULT_GOV_ADAPTIVE
 	 
 config CPUFREQ_HARDLIMIT
 	bool "CPU Frequency max. hardlimit"
-	default y
 	depends on CPU_FREQ
 	help
 	 Enforce a CPU hardlimit on mpdecision by refusing writes to sysfs
@@ -179,7 +178,19 @@ config CPU_FREQ_DEFAULT_GOV_SMARTMAX
 	select CPU_FREQ_GOV_SMARTMAX
 	help
 	 Use the CPUFreq governor 'smartmax' as default.
-
+	 
+config CPU_FREQ_DEFAULT_GOV_SMARTMAX
+	bool "smartmax"
+	select CPU_FREQ_GOV_SMARTMAX
+	help
+	 Use the CPUFreq governor 'smartmax' as default.
+	 
+config CPU_FREQ_DEFAULT_GOV_WAVE
+	bool "wave"
+	select CPU_FREQ_GOV_WAVE
+	help
+	Default governor of Amplitude kernel
+	
 endchoice
 
 config CPU_FREQ_GOV_PERFORMANCE
@@ -286,7 +297,6 @@ config CPU_FREQ_GOV_CONSERVATIVE
 
 	  If in doubt, say N.
 	  
-
 config CPU_FREQ_GOV_ADAPTIVE
 	tristate "'adaptive' cpufreq policy governor"
 	help
@@ -352,6 +362,13 @@ config CPU_FREQ_GOV_SMARTASS2
 	depends on CPU_FREQ
 	help
 	 'smartassV2' - a "smart" governor
+	 
+config CPU_FREQ_GOV_WAVE
+	tristate "'wave' cpufreq governor"
+	depends on CPU_FREQ
+	help
+	'wave' - A conservative based governor
+	If in doubt, say N.
 
 
 config GENERIC_CPUFREQ_CPU0
